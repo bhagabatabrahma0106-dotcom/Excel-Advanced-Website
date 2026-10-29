@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+# Excel Intermediate Skills | Interactive Visual Reference
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React + TypeScript** learning website presenting Excel skills through illustrated interface mockups, guided steps and topic navigation. The project is an educational reference—not a browser version of Microsoft Excel.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Seven sections covering workbook navigation, multiple sheets, data handling, charts, lists, auditing and printing.
+- Side navigation, course overview and structured step-by-step instruction cards.
+- Visual mockups of Excel UI actions and practical explanations.
+- Topic timestamps shown as **reference metadata**; no video player or bundled source video is part of the application.
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Layer | Technology |
+|---|---|
+| UI | React 19 + TypeScript |
+| Build system | Vite 8 |
+| Linting | ESLint |
+| Package management | npm with committed lockfile |
+| Automation | GitHub Actions (Node 22, install, lint, build) |
 
-## Expanding the ESLint configuration
+## Run locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Node.js 22.12+** and npm are recommended for the current Vite toolchain.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm ci
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open the local URL shown by Vite (normally `http://localhost:5173`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Quality checks
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run lint
+npm run build
+npm run preview
 ```
+
+The `build` command runs TypeScript project compilation and Vite production build. GitHub Actions runs dependency installation, lint and build on each push/PR; **deployment is not configured**.
+
+## Source guide
+
+- [src/App.tsx](src/App.tsx): page composition.
+- [src/components/Sidebar.tsx](src/components/Sidebar.tsx): topic navigation.
+- [src/components/Hero.tsx](src/components/Hero.tsx): course overview.
+- [src/components/OverviewTable.tsx](src/components/OverviewTable.tsx): topic index.
+- `src/components/Section1.tsx`–`Section7.tsx`: instructional content.
+- [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md): maintenance and QA guidance.
+
+## Limitations
+
+Screenshots and visual controls inside the educational mockups are not actual Excel application controls. Skill counts and timestamps in the UI are authored reference content and should be checked against the underlying learning material before quoting. No learning analytics backend, account system or deployment URL is claimed here.
+
+This is an independent educational work, **not endorsed by Microsoft**.
+
+Maintained by [bhagabatabrahma0106-dotcom](https://github.com/bhagabatabrahma0106-dotcom).
